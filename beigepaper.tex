@@ -200,7 +200,7 @@
 	\maketitle
 
 	\begin{center}\textbf{Abstract}\end{center}\par
-		\abstract{The Ethereum Protocol is a deterministic but practically unbounded state-machine with two basic functions; the first being a globally accessible singleton state, and the second being a virtual machine that applies changes to that state. This paper explains the individual parts that make up these two factors.}
+		\abstract{The Ethereum Protocol is a deterministic but practically unbounded state-machine with two basic functions; the first being a globally accessible singleton state, and the second being a virtual machine that applies changes to that state. This paper explains the individual parts that make up these two.}
 		\index{pseudocode}
 		\index{abstract state-machine}
 		\index{Yellowpaper}
@@ -214,7 +214,7 @@
 	
 	
 	\section{Imagining Bitcoin as a Computer}
-		Ethereum utilizes the distributed ledger model that originated with Bitcoin and repurposes it to model a virtual computer, giving  machine level opcodes the same level of certainty as Bitcoin transactions. Just as sure as you can be certain that Bitcoin's ledger is accurate and that timestamps are correct through the Bitcoin \textit{consensus mechanism}, just so sure is it that machine instructions initiated on Ethereum \textit{will} execute.  	      
+		Ethereum utilizes the distributed ledger model that originated with Bitcoin and repurposes it to model a virtual computer, giving  machine level opcodes the same level of certainty as Bitcoin transactions. Just as sure that Bitcoin's ledger is accurate and that timestamps are correct through the Bitcoin \textit{consensus mechanism}, just so sure is it that machine instructions initiated on Ethereum \textit{will} execute.
 		\index{Bitcoin}
 		\index{ledger}
 		\index{opcodes}
@@ -231,7 +231,7 @@
 		\index{executed}
 
 	 	\subsection{Native Currency}
-		Because Ethereum strives not primarily at the currency application, but at all applications, there is a fundamental \textsl{network cost unit} used to mitigate the possibility of abusing the network with excessive computational expenditures. This is called gas, and is explained fully in \S3. Gas is paid for exclusively in ether. The smallest unit of currency in Ethereum is the Wei, which is equal to $\Xi10^{-18}$, where $\Xi$ stands for 1 ether. All currency transactions in Ethereum, at the machine level, are counted in Wei. There is also the Szabo, which is $\Xi10^{-6}$,  and the Finney, which is $\Xi10^{-3}$.
+		Because Ethereum strives not primarily at the currency application, but at all applications, there is a fundamental \textsl{network cost unit} used to mitigate the possibility of abusing the network with excessive computational expenditures. This is called gas, and is explained fully in \S3.9. Gas is paid for exclusively in ether. The smallest unit of currency in Ethereum is the Wei, which is equal to $\Xi10^{-18}$, where $\Xi$ stands for 1 ether. All currency transactions in Ethereum, at the machine level, are counted in Wei. There is also the Szabo, which is $\Xi10^{-6}$,  and the Finney, which is $\Xi10^{-3}$.
 		
 		The Ethereum network is subservient to others in terms of one thing only: \textbf{ether}, the native currency for Ethereum. Everything the system can do is bounded up in its ability to expend ether in exchange for gas, which buys a particular amount of system performance in some desired direction. 
 		
@@ -389,7 +389,7 @@
 				\item Strings of bytes
 				\item Lists of other items						\end{enumerate}
 				
-				RLP encodes arrays of nested binary data to an arbitrary depth; it is the main serialization method for data in Ethereum. RLP encodes structure of data only, so it does not pay heed to the particular types of data being encoded. 
+				RLP encodes arrays of nested binary data to an arbitrary depth; it is the main serialization method for data in Ethereum. RLP encodes structure of data only, so it does not consider the particular types of data being encoded. 
 			\index{RLP}
 			\index{nested binary data}
 			\index{tree arbitrary depth}
@@ -490,7 +490,7 @@
 					\item \textbf{Transaction Series} -- This is the only non-header content in the block.
 					
 					\subsubsection{Block Number and Difficulty}
-						Note that is the difficulty of the genesis block. The Homestead difficulty parameter, is used to affect a dynamic homeostasis of time between blocks, as the time between blocks varies, as discussed below, as implemented in EIP-2. In the Homestead release, the exponential difficulty symbol, causes the difficulty to slowly increase (every 100,000 blocks) at an exponential rate, and thus increasing the block time difference, and putting time pressure on transitioning to proof-of-stake. This effect, known as the “difficulty bomb”, or “ice age”, was explained in EIP-649 and delayed and implemented earlier in EIP-2, was also modified in EIP-100 with the use of x, the adjustment factor, and the denominator 9, in order to target the mean block time including uncle blocks. Finally, in the Byzantium release, with EIP-649, the ice age was delayed by creating a fake block number, which is obtained by substracting three million from the actual block number, which in other words reduced the time difference between blocks, in order to allow more time to develop proof-of-stake and preventing the network from “freezing” up.\supercite{Wood2017}
+						Note that is the difficulty of the genesis block. In the Homestead release, the difficulty parameter is used to affect the average time between blocks. Time between blocks varies as implemented in EIP-2. The difficulty parameter, causes the difficulty to slowly increase (every 100,000 blocks) at an exponential rate, and thus increasing the block time difference, and putting time pressure on transitioning to proof-of-stake. This effect, known as the “difficulty bomb”, or “ice age”, was explained in EIP-649 and implemented earlier in EIP-2, was also modified in EIP-100 with the use of x, the adjustment factor, and the denominator 9, in order to target the mean block time including uncle blocks. Finally, in the Byzantium release, with EIP-649, the ice age was delayed by creating a fake block number, which is obtained by substracting three million from the actual block number, which reduced the time difference between blocks, in order to allow more time to develop proof-of-stake and preventing the network from “freezing” up.\supercite{Wood2017}
 					\index{block number}
 					\index{genesis difficulty}
 					\index{homestead difficulty parameter}
@@ -506,14 +506,14 @@
 					
 					\subsubsection{Account Creation} 
 
-					Account creation definitively occurs with contract creation. Is related to: \texttt{init}. Lastly, there is the \texttt{body} which is the EVM-code that executes if/when the account containing it receives a message call.
+					Account creation occurs with contract creation. Is related to: \texttt{init}. Lastly, there is the \texttt{body} which is the EVM-code that executes if/when the account containing it receives a message call.
 					\index{account creation}
 					\index{contract creation}
 					\index{account init}
 					\index{account body}
 
 					\subsubsection{Account State}
-				The account state contains details of any particular account during some specified world state. The account state is made up of four variables:
+				The account state contains details of a particular account during a specific world state. The account state is made up of four variables:
 					\index{account state}
 				\begin{enumerate}
 					\item \textbf{nonce} The number of transactions sent from this address, or the number of contract creations made by the account associated with this address.
@@ -543,7 +543,7 @@
 	
 					\subsection{The Transaction}
 	
-			The basic method for Ethereum accounts to interact with each other. The transaction is a single cryptographically signed instruction sent to the Ethereum network. There are two types of transactions: \textsc{message calls} and \textsc{contract creations}. Transactions lie at the heart of Ethereum, and are entirely responsible for the dynamism and flexibility of the platform. Transactions are the bread and butter of state transitions, that is of block additions, which contain all of the computation performed in one block. Each transaction applies the execution changes to the \textit{machine state}, a temporary state which consists of all the required changes in computation that must be made before a block is finalized and added to the world state.
+			The basic method for Ethereum accounts to interact with each other. The transaction is a single cryptographically signed instruction sent to the Ethereum network. There are two types of transactions: \textsc{message calls} and \textsc{contract creations}. Transactions lie at the heart of Ethereum, and are entirely responsible for the flexibility of the platform. Transactions are the bread and butter of state transitions, that is of block additions, which contain all of the computation performed in one block. Each transaction applies the execution changes to the \textit{machine state}, a temporary state which consists of all the required changes in computation that must be made before a block is finalized and added to the world state.
 					\index{transaction}
 					\index{state transition}
 					\index{machine state}
@@ -557,14 +557,14 @@
 				
 				\item \textbf{Nonce} -- The number of transactions sent by the sender.
 				\item \textbf{Gas Price} -- The number of Wei to pay the network for unit of gas.
-				\item \textbf{Gas Limit} -- The maximum amount of gas to be used in while executing a transaction.			
+				\item \textbf{Gas Limit} -- The maximum amount of gas to be used while executing a transaction.			
 				\item \textbf{To} -- The 20-character recipient of a message call.\footnote{In the case of a contract creation this is 0x000000000000000000.}
-				\item \textbf{Value} The number of Wei to be transferred to the recipient of a message call.\footnote{In the case of a contract creation, an endowment to the newly created contract account.}
+				\item \textbf{Value} -- The number of Wei to be transferred to the recipient of a message call.\footnote{In the case of a contract creation, an endowment to the newly created contract account.}
 				\item \textbf{v, r, s} 
 			\end{enumerate}
 			
 		\subsection{State Transition Function}
-		State Transitions come about through the State Transition Function; this is a high-level abstraction of several operations in Ethereum which comprise the overall act of taking changes from  the \textit{machine state} and adding  them to the world state.
+		State Transitions come about through the State Transition Function; this is a high-level abstraction of several operations in Ethereum which comprise taking changes from  the \textit{machine state} and adding  them to the world state.
 					\index{gas price}
 					\index{gas limit}
 					\index{to}
@@ -590,7 +590,7 @@
 					\index{serialization}
 					\index{deserialization}
 		\subsection{Ethereum Virtual Machine}
-			The EVM has a simple stack-based architecture. The word size of the machine and thus size of stack is 256-bit. This was chosen to facilitate the Keccak-256 hash scheme and elliptic-curve based computation. The memory model is a simple word-addressed byte-array. The memory stack has a maximum size of 1024-bits. The machine also has an independent storage model; this is similar in concept to the memory but rather than a byte array, it is a word-addressable word array. Unlike memory, which is volatile, storage is non-volatile and is maintained as part of the system state. 
+			The EVM has a simple stack-based architecture. The word size of the machine and the size of the stack is 256-bit. This was chosen to facilitate the Keccak-256 hash scheme and elliptic-curve based computation. The memory model is a simple word-addressed byte-array. The memory stack has a maximum size of 1024-bits. The machine also has an independent storage model; this is similar in concept to the memory but rather than a byte array, it is a word-addressable word array. Unlike memory, which is volatile, storage is non-volatile and is maintained as part of the system state. 
 					\index{stack based architecture}
 					\index{stack based}
 					\index{word size}
@@ -630,7 +630,7 @@
 					\index{machine halt}
 					\index{report exception}
 			
-			\subsubsection{Fees} Fees (denominated in gas) are charged under \textsc{three} distinct circumstances, all three as prerequisite to the execution of an operation.\supercite{Wood2017} The \textbf{first} and most common is \textsl{the fee intrinsic to the computation of the operation}. \textbf{Secondly}, gas may be deducted \textsl{in order to form the payment for a subordinate message call or contract creation}; this forms part of the payment for the CREATE, CALL and CALLCODE operations. \textbf{Finally}, \textsl{gas may be paid due to an increase in the usage of the memory.} 
+			\subsubsection{Fees} Fees (denominated in gas) are charged under three distinct circumstances, all three are prerequisites to the execution of an operation.\supercite{Wood2017} The \textbf{first} and most common is \textsl{the fee intrinsic to the computation of the operation}. \textbf{Second}, gas may be deducted \textsl{in order to form the payment for a subordinate message call or contract creation}; this forms part of the payment for the CREATE, CALL and CALLCODE operations. \textbf{Third}, \textsl{gas may be paid due to an increase in the usage of the memory.} 
 					\index{fees}
 					\index{gas}
 					\index{execution}
@@ -641,7 +641,7 @@
 					\index{gas paid for increased use of memory}
 
 
-			Over an account’s execution, the total fee for memory-usage payable is proportional to smallest multiple of 32 bytes that are required such that all memory indices (whether for read or write) are included in the range. This is paid for on a just-in-time basis; as such, referencing an area of memory at least 32 bytes greater than any previously indexed memory will certainly result in an additional memory usage fee. Due to this fee it is highly unlikely that addresses will trend above 32-bit bounds.\supercite{Wood2017} 
+			Over an account’s execution, the total fee for memory-usage payable is proportional to the smallest multiple of 32 bytes that are required so all memory indices (whether for read or write) are included in the range. This is paid for on a just-in-time basis; as such, referencing an area of memory at least 32 bytes greater than any previously indexed memory will result in an additional memory usage fee. Due to this fee it is unlikely that addresses will trend above 32-bit bounds.\supercite{Wood2017} 
 					\index{total fee}
 					\index{memory usage fee}
 					
@@ -651,12 +651,12 @@
 					\index{gas refund clearing space}
 					
 			\subsection{Execution}
-				The execution of a transaction defines the state transition function: \texttt{stf}. However, before any transaction can be executed it needs to go through the initial tests of intrinsic validity.
+				The execution of a transaction defines the state transition function. However, before any transaction can be executed it needs to go through the initial tests of intrinsic validity.
 				\index{intrinsic validity}
 			\subsubsection{Intrinsic Validity}
 				The criteria for intrinsic validity are as follows:
 				\begin{itemize}
-				\item The transaction follows the rules for \textsl{well-formed RLP} (recursive length prefix.)
+				\item The transaction follows the rules for \textsl{well-formed RLP} (recursive length prefix).
 				\item The \textsl{signature} on the transaction is valid.
 				\item The \textsl{nonce} on the transaction is valid, i.e. it is equivalent to the sender account's current nonce.
 				\item The \texttt{gas\_limit} is greater than or equal to the \texttt{intrinsic\_gas} used by the transaction.
@@ -670,7 +670,7 @@
 					\index{upfront payment}
 
 			\subsubsection{Transaction Receipt}
-				While the amount of gas used in the execution and the accrued log items belonging to the transaction are stored, information concering the result of a transaction's execution is stored in the transaction receipt \texttt{tx\_receipt}. The set of log events which are created through the execution of the transaction, \texttt{logs\_set} in addition to the bloom filter which contains the actual information from those log events \texttt{logs\_bloom} are located in the transaction receipt. In addition, the post-transaction state \texttt{post\_transaction(state)} and the amount of gas used in the block containing the transaction receipt post(gas\_used) are stored in the transaction receipt. As a result, the transaction receipt is a record of any given \texttt{execution}.
+        While the amount of gas used in the execution and the accrued log items belonging to the transaction are stored, information concering the result of a transaction's execution is stored in the transaction receipt \texttt{tx\_receipt}. The set of log events which are created through the execution of the transaction, \texttt{logs\_set} in addition to the bloom filter which contains the actual information from those log events \texttt{logs\_bloom} are located in the transaction receipt. In addition, the post-transaction state (\texttt{post\_transaction(state)}) and the amount of gas used in the block containing the transaction receipt (post(gas\_used)) are stored in the transaction receipt. As a result, the transaction receipt is a record of any given \texttt{execution}.
 					\index{gas used}
 					\index{transaction receipt}
 					\index{log items}
@@ -689,18 +689,18 @@
 		\end{itemize}
 		
 		\begin{itemize}
-        		\item The accounts tagged for self-destruction following the transaction's completion. \texttt{self\_destruct(accounts)}
+      \item The accounts tagged for self-destruction following the transaction's completion (\texttt{self\_destruct(accounts)}).
         		\item The \texttt{logs\_series}, which creates checkpoints in EVM code execution for frontend applications to explore, and is made up of the\texttt{logs\_set} and \texttt{logs\_bloom} from the \texttt{tx\_receipt}.
 			\item The refund balance.\footnote{The \textsc{sstore} operation increases the amount refunded by resetting contract storage to zero from some non-zero state.}
 		\end{itemize}
 
-		Code execution always depletes \texttt{gas}. If gas runs out, an out-of-gas error is signaled (\texttt{oog}) and the resulting state defines itself as an empty set; it has no effect on the world state. This describes the transactional nature of Ethereum. In order to affect the \textsc{world state}, a transaction must go through completely or not at all. 
+		Code execution always depletes \texttt{gas}. If gas runs out, an out-of-gas error is signaled and the resulting state defines itself as an empty set; it has no effect on the world state. This describes the transactional nature of Ethereum. In order to affect the \textsc{world state}, a transaction must go through completely or not at all. 
 
 				\subsubsection{Code Deposit}
 				If the initialization code completes successfully, a final contract-creation cost is paid, the code-deposit cost, \textsc{c}, proportional to the size of the created contract's code. 
 	
 				\subsubsection{Execution Model}
-				\paragraph{Basics}: The stack-based \textsl{virtual machine} which lies at the heart of the Ethereum and performs the actions of a computer. This is actually an instantial runtime that executes several substates, as EVM computation instances, before adding the finished result, all calculations having been completed, to the final state  via the \texttt{finalization function}. 
+				\paragraphThe stack-based \textsl{virtual machine} which lies at the heart of the Ethereum and performs the actions of a computer. This is actually an instantial runtime that executes several substates, as EVM computation instances, before adding the finished result, all calculations having been completed, to the final state  via the \texttt{finalization function}. 
 	
 				In addition to the \texttt{system state} and the \texttt{remaining gas} for computation there are several pieces of important information used in the execution environment that the execution agent must provide:
 					\index{system state}
@@ -733,7 +733,7 @@
 					\index{code array}
 					\index{block header}
 
-				The execution model defines the \texttt{state\_transition function}, which can compute the \texttt{resultant state}, the \texttt{remaining\_gas}, the \texttt{accrued\_substate} and the \texttt{resultant\_output}, given these definitions. For the present context, we will define it where the accrued substate is defined as the tuple of the \texttt{self-destructs\_set}, the \texttt{log\_series}, the \texttt{touched\_accounts} and the \texttt{refunds}.\supercite{Wood2017}
+				The execution model defines the \texttt{state\_transition function}, which can compute the \texttt{resultant state}, the \texttt{remaining\_gas}, the \texttt{accrued\_substate} and the \texttt{resultant\_output}, given these definitions. For the present context, we will define state_transition_fuction where the resultant substate is defined as the tuple of the \texttt{self-destructs\_set}, the \texttt{log\_series}, the \texttt{touched\_accounts} and the \texttt{refunds}.\supercite{Wood2017}
 					\index{execution model}
 					\index{state transition function}
 					\index{resultant state}
@@ -745,7 +745,7 @@
 					\index{touched accounts}
 					\index{refunds}
 
-				\subsubsection{Execution Overview} The \texttt{execution\_function}, in most practical implementations, \textbf{will be modeled as an iterative progression of the pair comprising the full \texttt{system\_state} and the \texttt{machine\_state}.} It's defined recursively with the \texttt{iterator\_function}, which defines the result of a single cycle of the state machine, together with the \texttt{halting\_check} function, which determines if the present state is an exceptional halting state of the machine and \texttt{output\_data} of the instruction if the present state is a \texttt{controlled\_halt} of the machine. An empty sequence/series indicates that execution should halt, while the empty set indicates that execution should continue.
+				\subsubsection{Execution Overview} The \texttt{execution\_function}, in most practical implementations, \textbf{will be modeled as an iterative progression of the full \texttt{system\_state} and the \texttt{machine\_state}.} It's defined recursively with the \texttt{iterator\_function}, which defines the result of a single cycle of the state machine and the \texttt{halting\_check} function, which determines if the present state is an exceptional halting state of the machine and \texttt{output\_data} of the instruction if the present state is a \texttt{controlled\_halt} of the machine. An empty sequence/series indicates that execution should halt, while the empty set indicates that execution should continue.
 					\index{execution function}
 					\index{iterative progression}
 					\index{iterator function}
